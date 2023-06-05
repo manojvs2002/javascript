@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Jump Search</title>
+  <script>
+    function jumpSearch(key, numbers) {
+      const length = numbers.length;
+      const jumpSize = Math.floor(Math.sqrt(length));
+      let step = jumpSize;
+      let prev = 0;
+
+      while (numbers[Math.min(step, length) - 1] < key) {
+        prev = step;
+        step += jumpSize;
+
+        if (prev >= length) {
+          return -1; // Key not found
+        }
+      }
+
+      while (numbers[prev] < key) {
+        prev++;
+
+        if (prev === Math.min(step, length)) {
+          return -1; // Key not found
+        }
+      }
+
+      if (numbers[prev] === key) {
+        return prev; // Key found
+      }
+
+      return -1; // Key not found
+    }
+
+    function performJumpSearch() {
+      const key = parseInt(document.getElementById('key').value);
+      const numberList = document.getElementById('numberList').value;
+      const numbers = numberList.split(',').map(num => parseInt(num));
+      
+      const result = jumpSearch(key, numbers);
+      if (result !== -1) {
+        document.getElementById('result').textContent = "Key found at index " + result;
+      } else {
+        document.getElementById('result').textContent = "Key not found";
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const button = document.getElementById('searchButton');
+      button.addEventListener('click', performJumpSearch);
+    });
+  </script>
+</head>
+<body>
+  <h1>Jump Search</h1>
+  <label for="key">Enter the key:</label>
+  <input type="number" id="key">
+  <br>
+  <label for="numberList">Enter the list of numbers:</label>
+  <input type="text" id="numberList">
+  <br>
+  <button id="searchButton">Search</button>
+  <p id="result"></p>
+</body>
+</html>

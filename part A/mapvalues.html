@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Map Operations</title>
+  <script>
+    function performMapOperations() {
+      const myMap = new Map();
+
+      // Get user input values
+      const key1 = document.getElementById('key1').value;
+      const value1 = document.getElementById('value1').value;
+      const key2 = document.getElementById('key2').value;
+      const value2 = document.getElementById('value2').value;
+      const key3 = document.getElementById('key3').value;
+      const value3 = document.getElementById('value3').value;
+
+      // Add user input values to the Map
+      myMap.set(key1, value1);
+      myMap.set(key2, value2);
+      myMap.set(key3, value3);
+
+      // Retrieve a value from the Map using key
+      const name = myMap.get('name');
+      document.getElementById('result').textContent = "Name: " + name;
+
+      // Iterate over the Map using for...of loop
+      const output = document.getElementById('output');
+      output.innerHTML = '';
+      for (const [key, value] of myMap) {
+        const li = document.createElement('li');
+        li.textContent = key + ': ' + value;
+        output.appendChild(li);
+      }
+    }
+  </script>
+</head>
+<body>
+  <h1>Map Operations</h1>
+  <label for="key1">Key 1:</label>
+  <input type="text" id="key1">
+  <label for="value1">Value 1:</label>
+  <input type="text" id="value1">
+  <br>
+  <label for="key2">Key 2:</label>
+  <input type="text" id="key2">
+  <label for="value2">Value 2:</label>
+  <input type="text" id="value2">
+  <br>
+  <label for="key3">Key 3:</label>
+  <input type="text" id="key3">
+  <label for="value3">Value 3:</label>
+  <input type="text" id="value3">
+  <br>
+  <button onclick="performMapOperations()">Perform Map Operations</button>
+  <p id="result"></p>
+  <ul id="output"></ul>
+</body>
+</html>

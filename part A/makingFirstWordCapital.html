@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>String Manipulation</title>
+  <script>
+    // Function to capitalize the first letter of each word in a string
+    function capitalizeFirstLetter(str) {
+      return str.replace(/\b\w/g, function(l) {
+        return l.toUpperCase();
+      });
+    }
+
+    // Function to split a string and convert it into an array of words
+    function splitStringIntoArray(str) {
+      return str.split(" ");
+    }
+
+    function manipulateString() {
+      const inputString = document.getElementById('inputString').value;
+      
+      // Capitalize the first letter of each word
+      const capitalizedString = capitalizeFirstLetter(inputString);
+      
+      // Split the string into an array of words
+      const wordArray = splitStringIntoArray(inputString);
+      
+      document.getElementById('capitalizedResult').textContent = "Capitalized string: " + capitalizedString;
+      document.getElementById('arrayResult').textContent = "Array of words: " + JSON.stringify(wordArray);
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const button = document.getElementById('manipulateButton');
+      button.addEventListener('click', manipulateString);
+    });
+  </script>
+</head>
+<body>
+  <h1>String Manipulation</h1>
+  <label for="inputString">Enter a string:</label>
+  <input type="text" id="inputString">
+  <button id="manipulateButton">Manipulate</button>
+  <br>
+  <p id="capitalizedResult"></p>
+  <p id="arrayResult"></p>
+</body>
+</html>

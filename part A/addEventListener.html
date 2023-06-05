@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Alphabetical Order</title>
+  <script>
+    function sortString() {
+      const inputString = document.getElementById('inputString').value;
+      
+      // Convert the string to an array, sort it, and join back into a string
+      const sortedString = inputString.split('').sort().join('');
+      
+      document.getElementById('result').textContent = "Sorted string: " + sortedString;
+    }
+    
+    document.addEventListener('DOMContentLoaded', function() {
+      const button = document.getElementById('sortButton');
+      button.addEventListener('click', sortString);
+    });
+  </script>
+</head>
+<body>
+  <h1>Alphabetical Order</h1>
+  <label for="inputString">Enter a string:</label>
+  <input type="text" id="inputString">
+  <button id="sortButton">Sort</button>
+  <p id="result"></p>
+</body>
+</html>

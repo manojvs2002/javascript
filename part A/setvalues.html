@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Set Operations</title>
+  <script>
+    function performSetOperations() {
+      const mySet = new Set();
+
+      mySet.add(10);
+      mySet.add('Hello');
+      mySet.add(true);
+
+      const hasHello = mySet.has('Hello');
+      document.getElementById('result').textContent = "Set contains 'Hello': " + hasHello;
+
+      const output = document.getElementById('output');
+      output.innerHTML = '';
+      for (const value of mySet) {
+        const li = document.createElement('li');
+        li.textContent = value;
+        output.appendChild(li);
+      }
+    }
+  </script>
+</head>
+<body>
+  <h1>Set Operations</h1>
+  <button onclick="performSetOperations()">Perform Set Operations</button>
+  <p id="result"></p>
+  <ul id="output"></ul>
+</body>
+</html>

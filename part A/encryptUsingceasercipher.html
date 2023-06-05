@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Caesar Cipher Encryption</title>
+  <script>
+    function caesarCipherEncrypt(text, shift) {
+      let encryptedText = '';
+
+      for (let i = 0; i < text.length; i++) {
+        let char = text[i];
+
+        if (char.match(/[a-z]/i)) {
+          const code = text.charCodeAt(i);
+          let encryptedCode;
+
+          if (char.match(/[a-z]/)) {
+            encryptedCode = ((code - 97 + shift) % 26) + 97;
+          } else if (char.match(/[A-Z]/)) {
+            encryptedCode = ((code - 65 + shift) % 26) + 65;
+          }
+
+          char = String.fromCharCode(encryptedCode);
+        }
+
+        encryptedText += char;
+      }
+
+      return encryptedText;
+    }
+
+    function performEncryption() {
+      const text = document.getElementById('text').value;
+      const shift = parseInt(document.getElementById('shift').value);
+      
+      const encryptedText = caesarCipherEncrypt(text, shift);
+      document.getElementById('result').textContent = "Encrypted text: " + encryptedText;
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const button = document.getElementById('encryptButton');
+      button.addEventListener('click', performEncryption);
+    });
+  </script>
+</head>
+<body>
+  <h1>Caesar Cipher Encryption</h1>
+  <label for="text">Enter the text:</label>
+  <input type="text" id="text">
+  <br>
+  <label for="shift">Enter the shift pattern:</label>
+  <input type="number" id="shift">
+  <br>
+  <button id="encryptButton">Encrypt</button>
+  <p id="result"></p
